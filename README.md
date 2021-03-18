@@ -1,1 +1,3 @@
-# swiftui-dots-loading-view
+# LoadingView
+
+A description of this package.

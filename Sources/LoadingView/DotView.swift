@@ -2,7 +2,7 @@
 //  DotView.swift
 //  
 //
-//   Copyright © 2021 IBM. All rights reserved.
+//  Created by Daniel on 16.03.2021.
 //
 
 import SwiftUI

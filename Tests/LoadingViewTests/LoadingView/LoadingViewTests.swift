@@ -1,9 +1,10 @@
 //
-//  File.swift
+//  LoadingViewTests.swift
 //  
 //
 //  Created by Daniel on 17.03.2021.
 //
+
 import XCTest
 import SwiftUI
 @testable import LoadingView

@@ -1,5 +1,5 @@
 //
-//  TopViewModifier.swift
+//  BlurViewModifier.swift
 //  
 //
 //  Created by Daniel on 17.03.2021.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct TopViewModifier<TopView: View>: ViewModifier {
+struct BlurViewModifier<TopView: View>: ViewModifier {
 
     // MARK: Private properties
 

@@ -16,13 +16,14 @@ extension View {
     ///   - binding: Binding value determinating if the view is visible or not
     /// - Returns: A new view that alters cuurent view by adding a blur and a new `View` on top of current one
     public func showBlurView<TopView: View>(with radius: CGFloat = 20, and topView: TopView, when binding: Binding<Bool>) -> some View {
-        modifier(TopViewModifier(destination: topView, blurRadius: radius, binding: binding))
+        modifier(BlurViewModifier(destination: topView, blurRadius: radius, binding: binding))
     }
     
     /// Use this method in order to show a  certain `LoadingView` on top of current view that is blurred our
     /// - Parameter binding: Binding value determinating if the view is visible or not
+    /// - Parameter color: Reoresents `dots` color and  defaults to `.accentColor` but can be customized however needed
     /// - Returns: A new view that alters cuurent view by adding a blur and  a nw`LodaingView` on top of current one
-    public func showLoadingView(when binding: Binding<Bool>, color: Color = .blue) -> some View {
+    public func showLoadingView(when binding: Binding<Bool>, color: Color = .accentColor) -> some View {
         showBlurView(and: LoadingView(color: color), when: binding)
     }
 }

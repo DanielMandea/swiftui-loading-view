@@ -13,7 +13,7 @@ class TopViewModifierTests: XCTestCase {
     
     // MARK: - Test Variables
     
-    var sut: TopViewModifier<Text>!
+    var sut: BlurViewModifier<Text>!
     var blurRadius: CGFloat = 20
     var destination = Text("Hello World")
     
@@ -23,7 +23,7 @@ class TopViewModifierTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        sut = TopViewModifier(destination: destination, blurRadius: blurRadius, binding: $isVisible)
+        sut = BlurViewModifier(destination: destination, blurRadius: blurRadius, binding: $isVisible)
     }
     
     override func tearDown() {
@@ -44,7 +44,7 @@ class TopViewModifierTests: XCTestCase {
     
     func testShowLoadingView() throws {
         XCTAssertNotNil(destination
-            .showLoadingView(when: $isVisible) as? ModifiedContent<Text, TopViewModifier<LoadingView>>)
+            .showLoadingView(when: $isVisible) as? ModifiedContent<Text, BlurViewModifier<LoadingView>>)
     }
     
     static var allTests = [

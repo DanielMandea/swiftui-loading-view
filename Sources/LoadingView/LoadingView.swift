@@ -36,6 +36,11 @@ public struct LoadingView: View {
 
 struct LoadingView_Previews: PreviewProvider {
     static var previews: some View {
-        LoadingView(color: .blue)
+        Group {
+            LoadingView(color: .blue)
+                .preferredColorScheme(.light)
+            LoadingView(color: .purple)
+                .preferredColorScheme(.dark)
+        }
     }
 }

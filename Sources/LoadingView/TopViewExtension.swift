@@ -9,21 +9,43 @@ import Foundation
 import SwiftUI
 
 extension View {
-    /// Use this method in order to show a  certain view on top of current view that is blurred our
+    /// Use this method in order to show a  certain view on top of current view that is blurred out
     /// - Parameters:
     ///   - radius: The redius for the blur that stays on top oy current view
     ///   - topView: A view that can show certain animatiom
     ///   - binding: Binding value determinating if the view is visible or not
     /// - Returns: A new view that alters cuurent view by adding a blur and a new `View` on top of current one
-    public func showBlurView<TopView: View>(with radius: CGFloat = 20, and topView: TopView, when binding: Binding<Bool>) -> some View {
+    public func blurModifier<TopView: View>(with radius: CGFloat = 20, and topView: TopView, when binding: Binding<Bool>) -> some View {
         modifier(BlurViewModifier(destination: topView, blurRadius: radius, binding: binding))
     }
     
-    /// Use this method in order to show a  certain `LoadingView` on top of current view that is blurred our
-    /// - Parameter binding: Binding value determinating if the view is visible or not
-    /// - Parameter color: Reoresents `dots` color and  defaults to `.accentColor` but can be customized however needed
-    /// - Returns: A new view that alters cuurent view by adding a blur and  a nw`LodaingView` on top of current one
-    public func showLoadingView(when binding: Binding<Bool>, color: Color = .accentColor) -> some View {
-        showBlurView(and: LoadingView(color: color), when: binding)
+    /// Use this method in order to show a  certain `View` on top of current view that is blurred out
+    /// - Returns: A new View that shows on top of blurred out view some other view passed through `@ViewBuilder`
+    @inlinable public func show<Content: View>(when binding: Binding<Bool>, @ViewBuilder content: () -> Content) -> some View {
+        blurModifier(and: content(), when: binding)
+    }
+    
+    /// Use this method in order to show a  certain `DotsActivityView` on top of current view that is blurred out
+    /// - Parameters:
+    ///   - binding: Defines if the view should be visible or not
+    ///   - color: The color of dots
+    /// - Returns: A new View that shows on top of blurred out view soome `DotsActivityView`
+    public func dotsIndicator(when binding: Binding<Bool>, color: Color = .accentColor) -> some View {
+        show(when: binding) {
+            DotsActivityView(color: color)
+        }
+    }
+    
+    /// Use this method in order to show a  certain `CircleActivityView` on top of current view that is blurred out
+    /// - Parameters:
+    ///   - binding: Defines if the view should be visible or not
+    ///   - lineWidth: The with of the view  that is animated
+    ///   - pathColor: The color of the path that holds animated view
+    ///   - lineColor: The color of the view that is animated
+    /// - Returns: A new View that shows on top of blurred out view soome `CircleActivityView`
+    public func circleIndicator(when binding: Binding<Bool>, lineWidth: CGFloat = 30, pathColor: Color, lineColor: Color) -> some View {
+        show(when: binding) {
+            CircleActivityView(lineWidth: lineWidth, pathColor: pathColor, lineColor: lineColor)
+        }
     }
 }

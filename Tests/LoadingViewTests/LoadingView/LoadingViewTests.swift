@@ -13,7 +13,7 @@ class LoadingViewTests: XCTestCase {
     
     // MARK: - Test Variables
     
-    var sut: LoadingView!
+    var sut: DotsActivityView!
     var size: CGFloat = 30
     var color: Color = .blue
     
@@ -21,7 +21,7 @@ class LoadingViewTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        sut = LoadingView(dotSize: size, color: color)
+        sut = DotsActivityView(dotSize: size, color: color)
     }
     
     override func tearDown() {

@@ -1,5 +1,5 @@
 //
-//  LoadingView.swift
+//  DotsActivityView.swift
 //  
 //
 //  Created by Daniel on 16.03.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct LoadingView: View {
+public struct DotsActivityView: View {
     
     // MARK: - Private
     
@@ -26,10 +26,16 @@ public struct LoadingView: View {
     // MARK: - Body
     
     public var body: some View {
-        HStack {
-            DotView(size: dotSize, delay: 0, color: color)
-            DotView(size: dotSize, delay: dotDelayValue, color: color)
-            DotView(size: dotSize, delay: dotDelayMultiplyer * dotDelayValue, color: color)
+        VStack {
+            Spacer()
+            HStack {
+                Spacer()
+                DotView(size: dotSize, delay: 0, color: color)
+                DotView(size: dotSize, delay: dotDelayValue, color: color)
+                DotView(size: dotSize, delay: dotDelayMultiplyer * dotDelayValue, color: color)
+                Spacer()
+            }
+            Spacer()
         }
     }
 }
@@ -37,9 +43,9 @@ public struct LoadingView: View {
 struct LoadingView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LoadingView(color: .blue)
+            DotsActivityView(color: .blue)
                 .preferredColorScheme(.light)
-            LoadingView(color: .purple)
+            DotsActivityView(color: .purple)
                 .preferredColorScheme(.dark)
         }
     }

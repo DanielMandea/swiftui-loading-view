@@ -51,7 +51,7 @@ extension View {
     
     /// Use this method in order to show a  certain `Content` on top of current view that is blurred out
     /// - Returns: A new animated `Content` `View` presented on top of blurred out `View`
-    @inlinable public func containerIndicatr<Content: View>(when binding: Binding<Bool>, @ViewBuilder content: () -> Content) -> some View {
+    @inlinable public func containerIndicator<Content: View>(when binding: Binding<Bool>, @ViewBuilder content: () -> Content) -> some View {
         show(when: binding) {
             ContainerActivityView {
                 content()

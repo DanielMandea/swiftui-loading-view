@@ -44,7 +44,7 @@ class TopViewModifierTests: XCTestCase {
     
     func testShowLoadingView() throws {
         XCTAssertNotNil(destination
-            .showLoadingView(when: $isVisible) as? ModifiedContent<Text, BlurViewModifier<DotsActivityView>>)
+                            .dotsIndicator(when: $isVisible) as? ModifiedContent<Text, BlurViewModifier<DotsActivityView>>)
     }
     
     static var allTests = [

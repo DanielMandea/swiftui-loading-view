@@ -20,7 +20,7 @@ extension View {
     }
     
     /// Use this method in order to show a  certain `View` on top of current view that is blurred out
-    /// - Returns: A new View that shows on top of blurred out view some other view passed through `@ViewBuilder`
+    /// - Returns:  A new animated `Content` `View` presented on top of blurred out`View`
     @inlinable public func show<Content: View>(when binding: Binding<Bool>, @ViewBuilder content: () -> Content) -> some View {
         blurModifier(and: content(), when: binding)
     }
@@ -29,7 +29,7 @@ extension View {
     /// - Parameters:
     ///   - binding: Defines if the view should be visible or not
     ///   - color: The color of dots
-    /// - Returns: A new View that shows on top of blurred out view soome `DotsActivityView`
+    /// - Returns:  A new  animated `DotsActivityView` `View` presented on top of blurred out `View`
     public func dotsIndicator(when binding: Binding<Bool>, color: Color = .accentColor) -> some View {
         show(when: binding) {
             DotsActivityView(color: color)
@@ -42,10 +42,20 @@ extension View {
     ///   - lineWidth: The with of the view  that is animated
     ///   - pathColor: The color of the path that holds animated view
     ///   - lineColor: The color of the view that is animated
-    /// - Returns: A new View that shows on top of blurred out view soome `CircleActivityView`
+    /// - Returns: A new animated `CircleActivityView` `View` presented on top of blurred out `View`
     public func circleIndicator(when binding: Binding<Bool>, lineWidth: CGFloat = 30, pathColor: Color, lineColor: Color) -> some View {
         show(when: binding) {
             CircleActivityView(lineWidth: lineWidth, pathColor: pathColor, lineColor: lineColor)
+        }
+    }
+    
+    /// Use this method in order to show a  certain `Content` on top of current view that is blurred out
+    /// - Returns: A new animated `Content` `View` presented on top of blurred out `View`
+    @inlinable public func containerIndicatr<Content: View>(when binding: Binding<Bool>, @ViewBuilder content: () -> Content) -> some View {
+        show(when: binding) {
+            ContainerActivityView {
+                content()
+            }
         }
     }
 }

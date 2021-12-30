@@ -25,11 +25,11 @@ public struct CircleActivityView: View {
     }
     
     // MARK: - State
- 
+    
     @State var isLoading: Bool = false
     
     // MARK: - Body
- 
+    
     public var body: some View {
         ZStack {
             Circle()
@@ -41,9 +41,10 @@ public struct CircleActivityView: View {
                 .foregroundColor(lineColor)
                 .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
                 .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
-                .onAppear() {
-                    self.isLoading = true
-            }
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1){ self.isLoading.toggle()
+                    }
+                }
         }
     }
 }

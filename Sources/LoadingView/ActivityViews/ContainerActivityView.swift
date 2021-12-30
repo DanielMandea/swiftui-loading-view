@@ -30,10 +30,7 @@ public struct ContainerActivityView<Content>: View where Content: View {
         content
             .rotationEffect(Angle(degrees: isLoading ? 360: 0))
             .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1){ self.isLoading.toggle() 
-                }
-            }
+            .onAppear { self.isLoading.toggle() }
     }
 }
 
@@ -42,12 +39,5 @@ struct ContinerActivityView_Previews: PreviewProvider {
         ContainerActivityView() {
             Text("Hello World")
         }
-    }
-}
-
-extension Task where Success == Never, Failure == Never {
-    static func sleep(seconds: Double) async throws {
-        let duration = UInt64(seconds * 1_000_000_000)
-        try await Task.sleep(nanoseconds: duration)
     }
 }

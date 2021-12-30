@@ -36,10 +36,8 @@ public struct DotView: View {
             .foregroundColor(color)
             .animation(Animation.easeInOut(duration: 0.6).repeatForever().delay(delay))
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    withAnimation {
-                        self.scale = 1
-                    }
+                withAnimation {
+                    self.scale = 1
                 }
             }
     }

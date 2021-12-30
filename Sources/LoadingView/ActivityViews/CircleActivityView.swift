@@ -41,10 +41,7 @@ public struct CircleActivityView: View {
                 .foregroundColor(lineColor)
                 .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
                 .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1){ self.isLoading.toggle()
-                    }
-                }
+                .onAppear { self.isLoading.toggle() }
         }
     }
 }

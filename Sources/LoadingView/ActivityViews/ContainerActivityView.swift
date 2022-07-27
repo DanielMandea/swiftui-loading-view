@@ -23,13 +23,18 @@ public struct ContainerActivityView<Content>: View where Content: View {
     @inlinable public init(@ViewBuilder content: () -> Content) {
         self.content = content()
     }
+
+    private var spinningAnimation: Animation {
+        Animation.linear(duration: 1)
+            .repeatForever(autoreverses: false)
+    }
     
     // MARK: - Body
     
     public var body: some View {
         content
             .rotationEffect(Angle(degrees: isLoading ? 360: 0))
-            .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
+            .animation(spinningAnimation, value: isLoading)
             .onAppear { isLoading = true }
     }
 }

@@ -30,7 +30,7 @@ public struct ContainerActivityView<Content>: View where Content: View {
         content
             .rotationEffect(Angle(degrees: isLoading ? 360: 0))
             .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
-            .onAppear { self.isLoading.toggle() }
+            .onAppear { isLoading = true }
     }
 }
 
